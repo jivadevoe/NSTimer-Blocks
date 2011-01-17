@@ -1,6 +1,5 @@
 //
 //  NSTimer+Blocks.m
-//  Shibui
 //
 //  Created by Jiva DeVoe on 1/14/11.
 //  Copyright 2011 Random Ideas, LLC. All rights reserved.
@@ -12,15 +11,15 @@
 
 +(id)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats
 {
-    return [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(executeSimpleBlock:) userInfo:[inBlock copy] repeats:inRepeats];
+    return [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:[inBlock copy] repeats:inRepeats];
 }
 
 +(id)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats
 {
-    return [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(executeSimpleBlock:) userInfo:[inBlock copy] repeats:inRepeats];
+    return [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:[inBlock copy] repeats:inRepeats];
 }
 
-+(void)executeSimpleBlock:(NSTimer *)inTimer;
++(void)jdExecuteSimpleBlock:(NSTimer *)inTimer;
 {
     if([inTimer userInfo])
     {

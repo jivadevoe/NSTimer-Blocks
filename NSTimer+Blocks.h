@@ -1,6 +1,5 @@
 //
 //  NSTimer+Blocks.h
-//  Shibui
 //
 //  Created by Jiva DeVoe on 1/14/11.
 //  Copyright 2011 Random Ideas, LLC. All rights reserved.
