@@ -6,7 +6,7 @@ Extremely simple category on NSTimer which makes it able to use blocks.
 HOW IT WORKS
 ------------
 
-I figure if you're using a block, you probably won't need to pass any userinfo object into the timer... you can get to whatever you need just from the block.  So, I just hijack the `+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:` class method and it's brother `-init...`, setting it to use itself as the target, and to execute the class method `+executeSimpleBlock:` (which is part of the category) then pass the block you specify as the userInfo object which is then used in the execute method.  Pretty straightforward stuff.
+I figure if you're using a block, you probably won't need to pass any userinfo object into the timer... you can get to whatever you need just from the block.  So, I just hijack the `+scheduledTimerWithTimeInterval:target:selector:userInfo:repeats:` class method and it's brother `-init...`, setting it to use itself as the target, and to execute the class method `+jdExecuteSimpleBlock:` (which is part of the category) then pass the block you specify as the userInfo object which is then used in the execute method.  Pretty straightforward stuff.
 
 HOW TO USE IT
 -------------
