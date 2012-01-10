@@ -13,7 +13,9 @@
 {
     void (^block)() = [inBlock copy];
     id ret = [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:block repeats:inRepeats];
+#if !__has_feature(objc_arc)
     [block release];
+#endif
     return ret;
 }
 
@@ -21,7 +23,9 @@
 {
     void (^block)() = [inBlock copy];
     id ret = [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:block repeats:inRepeats];
+#if !__has_feature(objc_arc)
     [block release];
+#endif
     return ret;
 }
 
