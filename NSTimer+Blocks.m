@@ -25,7 +25,7 @@
     return ret;
 }
 
-+(void)jdExecuteSimpleBlock:(NSTimer *)inTimer;
++(void)jdExecuteSimpleBlock:(NSTimer *)inTimer
 {
     if([inTimer userInfo])
     {
