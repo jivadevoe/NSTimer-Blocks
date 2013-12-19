@@ -16,7 +16,7 @@ NSString    *   JDTimerPlusBlocksBlockKey = @"JDTimerPlusBlocksBlockKey";
 +(id)   scheduledTimerWithTimeInterval: (NSTimeInterval)inTimeInterval block: (void (^)())inBlock repeats: (BOOL)inRepeats
 {
     void (^block)() = [inBlock copy];
-    id ret = [self scheduledTimerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey] repeats: inRepeats];
+    id ret = [self scheduledTimerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey, nil] repeats: inRepeats];
 #if !__has_feature(objc_arc)
     [block release];
 #endif
@@ -26,7 +26,7 @@ NSString    *   JDTimerPlusBlocksBlockKey = @"JDTimerPlusBlocksBlockKey";
 +(id)   timerWithTimeInterval: (NSTimeInterval)inTimeInterval block: (void (^)())inBlock repeats: (BOOL)inRepeats
 {
     void (^block)() = [inBlock copy];
-    id ret = [self timerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey] repeats: inRepeats];
+    id ret = [self timerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey, nil] repeats: inRepeats];
 #if !__has_feature(objc_arc)
     [block release];
 #endif
