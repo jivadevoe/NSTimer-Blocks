@@ -22,6 +22,15 @@ Very simple:
 	
 This may be overkill for most NSTimer operations... I mean, do you really have a need for a block?  Couldn't you use the selector methods?  Sure you could... but sometimes it's more elegant to use a block... so here you go.
 
+FIND THIS USEFUL?
+-----------------
+
+Why don't you buy me a beer with bitcoin?
+
+My wallet address is: 1JtjkQFmJmbMumWquh5J2fuRuD6LkWr5QL
+
+![Wallet QR Code](http://www.random-ideas.net/qrcode.png)
+
 
 LICENSE
 -------
