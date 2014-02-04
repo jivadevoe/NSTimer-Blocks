@@ -7,29 +7,37 @@
 
 #import "NSTimer+Blocks.h"
 
-@implementation NSTimer (Blocks)
 
-+(id)scheduledTimerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats
+NSString    *   JDTimerPlusBlocksBlockKey = @"JDTimerPlusBlocksBlockKey";
+
+
+@implementation NSTimer (JDBlocks)
+
++(id)   scheduledTimerWithTimeInterval: (NSTimeInterval)inTimeInterval block: (void (^)())inBlock repeats: (BOOL)inRepeats
 {
     void (^block)() = [inBlock copy];
-    id ret = [self scheduledTimerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:block repeats:inRepeats];
+    id ret = [self scheduledTimerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey, nil] repeats: inRepeats];
+#if !__has_feature(objc_arc)
     [block release];
+#endif
     return ret;
 }
 
-+(id)timerWithTimeInterval:(NSTimeInterval)inTimeInterval block:(void (^)())inBlock repeats:(BOOL)inRepeats
++(id)   timerWithTimeInterval: (NSTimeInterval)inTimeInterval block: (void (^)())inBlock repeats: (BOOL)inRepeats
 {
     void (^block)() = [inBlock copy];
-    id ret = [self timerWithTimeInterval:inTimeInterval target:self selector:@selector(jdExecuteSimpleBlock:) userInfo:block repeats:inRepeats];
+    id ret = [self timerWithTimeInterval: inTimeInterval target: self selector: @selector(jdExecuteSimpleBlock:) userInfo: [NSDictionary dictionaryWithObjectsAndKeys: (id)block, JDTimerPlusBlocksBlockKey, nil] repeats: inRepeats];
+#if !__has_feature(objc_arc)
     [block release];
+#endif
     return ret;
 }
 
-+(void)jdExecuteSimpleBlock:(NSTimer *)inTimer;
++(void)jdExecuteSimpleBlock: (NSTimer *)inTimer
 {
-    if([inTimer userInfo])
+    void (^block)() = (void (^)())[[inTimer userInfo] objectForKey: JDTimerPlusBlocksBlockKey];
+    if( block )
     {
-        void (^block)() = (void (^)())[inTimer userInfo];
         block();
     }
 }
